@@ -64,13 +64,13 @@
                             </div>
                             <div class="col-lg-4 col-sm-8 col-12">
                                 <div class="p-3 bg-light rounded">
-                                    <p class="mb-1 text-muted small"><i class="bi bi-envelope me-1"></i>Nacionalitat</p>
+                                    <p class="mb-1 text-muted small"><i class="bi bi-flag me-1"></i>Nacionalitat</p>
                                     <p class="mb-0 fw-semibold"><?php echo $content->getNacionalitat(); ?></p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-4 col-12">
                                 <div class="p-3 bg-light rounded">
-                                    <p class="mb-1 text-muted small"><i class="bi bi-phone me-1"></i>Any de naixement</p>
+                                    <p class="mb-1 text-muted small"><i class="bi bi-calendar me-1"></i>Any de naixement</p>
                                     <p class="mb-0 fw-semibold"><?php echo $content->getAnyNaixement(); ?></p>
                                 </div>
                             </div>
@@ -82,8 +82,8 @@
             <div class="row">
                 <div class="col-12">
                     <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light">
-                        <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-orange">
-                            <i class="bi bi-clipboard2-pulse-fill me-2"></i>Llistat de llibres disponibles de l'autor
+                            <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-orange">
+                            <i class="bi bi-book me-2"></i>Llistat de llibres disponibles de l'autor
                         </legend>
 
                         <?php
@@ -95,9 +95,9 @@
                                     <thead>
                                         <tr>
                                             <th class="py-3"><i class="bi bi-hash me-1"></i>ID</th>
-                                            <th class="py-3"><i class="bi bi-calendar3 me-1"></i>ISBN</th>
-                                            <th class="py-3"><i class="bi bi-file-medical me-1"></i>Títol</th>
-                                            <th class="py-3"><i class="bi bi-journal-text me-1"></i>Any de Publicació</th>
+                                            <th class="py-3"><i class="bi bi-upc-scan me-1"></i>ISBN</th>
+                                            <th class="py-3"><i class="bi bi-book me-1"></i>Títol</th>
+                                            <th class="py-3"><i class="bi bi-calendar3 me-1"></i>Any de Publicació</th>
                                         </tr>
                                     </thead>
                                     <tbody>

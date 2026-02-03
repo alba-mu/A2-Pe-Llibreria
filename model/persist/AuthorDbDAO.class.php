@@ -7,6 +7,8 @@
  */
 
 require_once "model/persist/ConnectDb.class.php";
+require_once "model/Author.class.php";
+require_once "model/Book.class.php";
 
 /**
  * AuthorDbDAO - Data Access Object
@@ -79,6 +81,36 @@ class AuthorDbDAO {
     }
 
 
+    public function add($author): bool {
+        if ($this->connect == NULL) {
+            $_SESSION['error'] = "No s'ha pogut connectar amb la base de dades";
+            return false;
+        }
+
+        try {
+            $sql = <<<SQL
+                INSERT INTO autors (nom, nacionalitat, any_naixement)
+                VALUES (:nom, :nacionalitat, :any_naixement);
+            SQL;
+
+            $stmt = $this->connect->prepare($sql);
+            $stmt->bindValue(":nom", $author->getNom(), PDO::PARAM_STR);
+            $stmt->bindValue(":nacionalitat", $author->getNacionalitat(), PDO::PARAM_STR);
+            $stmt->bindValue(":any_naixement", $author->getAnyNaixement(), PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+            if ($stmt->rowCount()) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } catch (PDOException $e) {
+            return FALSE;
+        }
+    }
+
+
     /**
      * Private method to fetch a single author from the database
      * 
@@ -116,7 +148,8 @@ class AuthorDbDAO {
         $books = array();
         try {
             $sql = <<<SQL
-                SELECT id, isbn, títol, any_publicacio, autor_id FROM llibres WHERE autor_id=:authorId;
+                SELECT id, isbn, titol, any_publicacio, autor_id
+                FROM llibres WHERE autor_id=:authorId;
             SQL;
 
             $stmt = $this->connect->prepare($sql);

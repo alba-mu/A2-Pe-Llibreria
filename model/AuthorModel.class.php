@@ -50,7 +50,8 @@ class AuthorModel {
         $result=$this->dataAuthor->add($author);
         
         if ($result==FALSE) {
-            $_SESSION['error']=AuthorMessage::ERR_DAO['insert'];
+            // append error so the session error bag remains an array
+            $_SESSION['error'][]=AuthorMessage::ERR_DAO['insert'];
         }
         
         return $result;

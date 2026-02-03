@@ -9,7 +9,7 @@
 class AuthorFormValidation {
 
     const SEARCH_FIELDS = array('id');
-    const ADD_FIELDS = array('name', 'nacionalitat', 'any_naixement');
+    const ADD_FIELDS = array('nom', 'nacionalitat', 'any_naixement');
     
     const NUMERIC = "/[^0-9]/";
     const YEAR = "/^(19|20)\d{2}$/";

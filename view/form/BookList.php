@@ -1,15 +1,15 @@
 <?php
 /**
- * File: AuthorList.php
- * Description: Displays a table listing all registered authors.
- * Shows author ID, name, nationality, and birth date.
+ * File: BookList.php
+ * Description: Displays a table listing all registered books.
+ * Shows book ID, ISBN, title, publication year and author id.
  */
 ?>
 <div id="content" class="container-fluid mt-4">
     <div class="container">
         <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-primary">
             <legend class="float-none w-auto px-3 py-2 mb-4 rounded-2 text-white fw-bold legend-large">
-                <i class="bi bi-people-fill me-2"></i>Llistat d'Autors
+                <i class="bi bi-book me-2"></i>Llistat de Llibres
             </legend>
 
             <?php
@@ -20,20 +20,22 @@
                                 <thead>
                                     <tr>
                                         <th class="py-3"><i class="bi bi-hash me-1"></i>Id</th>
-                                        <th class="py-3"><i class="bi bi-person me-1"></i>Nom</th>
-                                        <th class="py-3"><i class="bi bi-flag me-1"></i>Nacionalitat</th>
-                                        <th class="py-3"><i class="bi bi-calendar me-1"></i>Any de naixement</th>
+                                        <th class="py-3"><i class="bi bi-upc-scan me-1"></i>ISBN</th>
+                                        <th class="py-3"><i class="bi bi-book me-1"></i>Títol</th>
+                                        <th class="py-3"><i class="bi bi-calendar3 me-1"></i>Any de publicació</th>
+                                        <th class="py-3"><i class="bi bi-person me-1"></i>Id d'Autor</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 EOT;
-                    foreach ($content as $author) {
+                    foreach ($content as $book) {
                         echo <<<EOT
                                     <tr>
-                                        <td class="py-3 fw-semibold cell-id">{$author->getId()}</td>
-                                        <td class="py-3">{$author->getNom()}</td>
-                                        <td class="py-3"><span class="badge rounded-pill badge-clinic-email">{$author->getNacionalitat()}</span></td>
-                                        <td class="py-3">{$author->getAnyNaixement()}</td>
+                                        <td class="py-3 fw-semibold cell-id">{$book->getId()}</td>
+                                        <td class="py-3">{$book->getIsbn()}</td>
+                                        <td class="py-3">{$book->getTitol()}</td>
+                                        <td class="py-3">{$book->getAny_publicacio()}</td>
+                                        <td class="py-3">{$book->getAutorId()}</td>
                                     </tr>
 EOT;
                     }

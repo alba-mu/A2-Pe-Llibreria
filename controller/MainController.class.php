@@ -6,7 +6,7 @@
  */
 
 require_once "controller/AuthorController.class.php";
-//require_once "controller/BookController.class.php";
+require_once "controller/BookController.class.php";
 
 /**
  * MainController - Primary Request Router

@@ -10,7 +10,7 @@
         <div class="row mb-4">
             <div class="col-12">
                 <div class="text-center py-5 px-4 rounded-3 shadow-sm hero-section">
-                    <i class="bi bi-hospital hero-icon"></i>
+                    <i class="bi bi-book hero-icon"></i>
                     <h1 class="mt-3 mb-3 fw-bold text-white">Benvingut a la Biblioteca Provençana</h1>
                     <p class="lead text-white mb-0">Sistema de Gestió d'Autors i Llibres</p>
                 </div>
@@ -41,7 +41,7 @@
             <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm card-border-light">
                     <div class="card-body text-center p-4">
-                        <i class="bi bi-pencil-square card-icon icon-light"></i>
+                        <i class="bi bi-book card-icon icon-light"></i>
                         <h5 class="card-title mt-3 mb-3 fw-bold title-light">Llistat de Llibres</h5>
                         <p class="card-text text-muted">Consulta la llista de llibres disponibles a la biblioteca.</p>
                     </div>

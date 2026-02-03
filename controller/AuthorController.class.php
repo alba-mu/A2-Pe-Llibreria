@@ -82,7 +82,8 @@ class AuthorController {
         $authors=$this->model->listAll();
 
         if (empty($authors)) {
-            $_SESSION['error']=AuthorMessage::ERR_FORM['not_found'];
+            // keep $_SESSION['error'] as an array and append the message
+            $_SESSION['error'][]=AuthorMessage::ERR_FORM['not_found'];
         }
 
         $this->view->display("view/form/AuthorList.php", $authors);
