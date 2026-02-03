@@ -109,7 +109,8 @@ class AuthorController {
         $authorInput=AuthorFormValidation::checkData(AuthorFormValidation::SEARCH_FIELDS);
 
         if (!empty($_SESSION['error'])) {
-            return NULL;
+            $this->view->display("view/form/AuthorFormSearch.php");
+            return;
         }
 
         $author=$this->model->getAuthorById($authorInput->getId(), true);
