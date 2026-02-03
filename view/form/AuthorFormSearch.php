@@ -1,0 +1,125 @@
+<?php
+/**
+ * File: AuthorFormSearch.php
+ * Description: Form to search for an author by ID and display detailed information.
+ * Shows author data, book information, and complete publication history.
+ */
+?>
+<div id="content" class="container-fluid mt-4">
+    <div class="container mb-4">
+        <form method="post" action="">
+            <div class="row">
+                <div class="col-12">
+                    <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-search mb-3">
+                        <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-orange mb-0">
+                            <i class="bi bi-search me-2"></i>Cercar autor
+                        </legend>
+
+                        <div class="row align-items-end">
+                                <label for="idField" class="form-label label-white fw-semibold mb-2">
+                                    <i class="bi bi-hash me-1"></i>Id Autor <span class="text-warning">*</span>
+                                </label>
+                            <div class="col-sm-9 mb-3">
+                                <input
+                                    type="text"
+                                    class="form-control border-0 shadow-sm input-search"
+                                    id="idField"
+                                    placeholder="Introdueix l'ID de l'autor"
+                                    name="id"
+                                    value="<?php if (isset($content) && $content != NULL) { echo $content->getId(); } ?>"
+                                />
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <button type="submit" name="action" value="show_details" class="btn btn-clinic-search btn-sm-lg w-100 shadow fw-bold">
+                                    <i class="bi bi-search me-2 fw-bold"></i>Cercar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <p class="text-white-50-custom fst-italic small mt-3 mb-0">* Camp obligatori</p>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+
+        <?php if (isset($content) && $content != NULL): ?>
+            <div class="row g-4 mb-4">
+                <div class="col-12">
+                    <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light h-100">
+                        <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-accent">
+                            <i class="bi bi-person-fill me-2"></i>Informació de l'autor cercat
+                        </legend>
+                        <div class="row g-3">
+                            <div class="col-lg-2 col-sm-4 col-12">
+                                <div class="p-3 bg-light rounded">
+                                    <p class="mb-1 text-muted small"><i class="bi bi-hash me-1"></i>ID</p>
+                                    <p class="mb-0 fw-semibold"><?php echo $content->getId(); ?></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-8 col-12">
+                                <div class="p-3 bg-light rounded">
+                                    <p class="mb-1 text-muted small"><i class="bi bi-person me-1"></i>Nom</p>
+                                    <p class="mb-0 fw-semibold"><?php echo $content->getNom(); ?></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-8 col-12">
+                                <div class="p-3 bg-light rounded">
+                                    <p class="mb-1 text-muted small"><i class="bi bi-envelope me-1"></i>Nacionalitat</p>
+                                    <p class="mb-0 fw-semibold"><?php echo $content->getNacionalitat(); ?></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-4 col-12">
+                                <div class="p-3 bg-light rounded">
+                                    <p class="mb-1 text-muted small"><i class="bi bi-phone me-1"></i>Any de naixement</p>
+                                    <p class="mb-0 fw-semibold"><?php echo $content->getAnyNaixement(); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light">
+                        <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-orange">
+                            <i class="bi bi-clipboard2-pulse-fill me-2"></i>Llistat de llibres disponibles de l'autor
+                        </legend>
+
+                        <?php
+                        $books = $content->getBooksList();
+                        if (!empty($books)):
+                        ?>
+                            <div class="table-responsive">
+                                <table class="table-clinic">
+                                    <thead>
+                                        <tr>
+                                            <th class="py-3"><i class="bi bi-hash me-1"></i>ID</th>
+                                            <th class="py-3"><i class="bi bi-calendar3 me-1"></i>ISBN</th>
+                                            <th class="py-3"><i class="bi bi-file-medical me-1"></i>Títol</th>
+                                            <th class="py-3"><i class="bi bi-journal-text me-1"></i>Any de Publicació</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($books as $entry): ?>
+                                        <tr>
+                                            <td class="py-3 fw-semibold" style="color: #469387;"><?php echo $entry->getId(); ?></td>
+                                            <td class="py-3"><?php echo $entry->getIsbn(); ?></td>
+                                            <td class="py-3"><?php echo $entry->getTitle(); ?></td>
+                                            <td class="py-3"><?php echo $entry->getPublicationYear(); ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php else: ?>
+                            <div class="alert-clinic-info">
+                                <i class="bi bi-info-circle me-2"></i>No hi ha llibres per aquest autor a la nostra llibreria.
+                            </div>
+                        <?php endif; ?>
+                    </fieldset>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

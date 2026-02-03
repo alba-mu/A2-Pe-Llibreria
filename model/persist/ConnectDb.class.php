@@ -1,0 +1,41 @@
+<?php
+/**
+ * File: ConnectDb.class.php
+ * Description: Database connection handler. Establishes and manages PDO connection to MySQL database.
+ * Handles connection errors and provides connection object to data access objects.
+ */
+
+class ConnectDb {
+    
+    public function __construct() {  
+        
+    }
+    
+    /**
+     * Establishes and returns a PDO database connection
+     * Handles connection to MySQL 'llibreria' database with proper error handling
+     * 
+     * @return PDO|null PDO connection object on success, NULL on failure
+     */
+    public function getConnection() {
+        $hostname='192.168.143.166'; // Database server (virtual machine - proven)
+        $username='llibreria_user';
+        $password='password';
+        $dbname='llibreria';
+
+        $conn=NULL;
+        
+        try {
+            $conn=new PDO("mysql:host=$hostname;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {
+            printf("<p>Error code:</p><p>%s</p>", $e->getCode());
+            printf("<p>Error message:</p><p>%s</p>", $e->getMessage());
+            printf("<p>Stack trace:</p><p>%s</p>", nl2br($e->getTraceAsString()));
+        }
+        
+        return $conn;
+    }
+    
+}
