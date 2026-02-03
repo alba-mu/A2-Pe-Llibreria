@@ -105,8 +105,8 @@
                                         <tr>
                                             <td class="py-3 fw-semibold" style="color: #469387;"><?php echo $entry->getId(); ?></td>
                                             <td class="py-3"><?php echo $entry->getIsbn(); ?></td>
-                                            <td class="py-3"><?php echo $entry->getTitle(); ?></td>
-                                            <td class="py-3"><?php echo $entry->getPublicationYear(); ?></td>
+                                            <td class="py-3"><?php echo $entry->getTitol(); ?></td>
+                                            <td class="py-3"><?php echo $entry->getAny_publicacio(); ?></td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>
