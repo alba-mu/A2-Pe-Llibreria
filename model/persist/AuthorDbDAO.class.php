@@ -81,6 +81,12 @@ class AuthorDbDAO {
     }
 
 
+    /**
+     * Inserts a new author into the database
+     * 
+     * @param Author $author Author object to insert
+     * @return bool TRUE on success, FALSE on failure
+     */
     public function add($author): bool {
         if ($this->connect == NULL) {
             $_SESSION['error'] = "No s'ha pogut connectar amb la base de dades";

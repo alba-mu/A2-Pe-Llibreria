@@ -1,8 +1,9 @@
 <?php
 /**
- * File: OwnerFormModify.php
- * Description: Form for searching and modifying owner information.
- * Provides search by ID and editable fields for owner data (name, email, mobile).
+ * File: AuthorFormAdd.php
+ * Description: View template that renders the form to add a new author.
+ * The form includes fields for name, nationality and birth year and
+ * expects POST submission with the keys: 'nom', 'nacionalitat', 'any_naixement'.
  */
 ?>
 <div id="content" class="container-fluid mt-4">
